@@ -33,3 +33,12 @@ This repository contains my personal solutions and notes for the labs from PortS
     4.  The -- comment operator caused the rest of the query (the password check) to be ignored, resulting in a successful login as the administrator.
 
 ---
+---
+
+### 3. Lab: SQL injection UNION attack, determining the number of columns returned by the query
+
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (UNION Attack)
+*   Description: The goal was to find the number of columns returned by the original query. This is the first step for any UNION-based attack.
+*   Payload Used: ' UNION SELECT NULL,NULL,NULL--
+*   Learning: I learned how to use a series of UNION SELECT NULL payloads to probe the database. By incrementing the number of NULL values until the query executed without error, I successfully identified that the query returns 3 columns. This knowledge is critical for structuring future attacks to exfiltrate data.
