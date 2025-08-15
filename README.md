@@ -42,3 +42,20 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Description: The goal was to find the number of columns returned by the original query. This is the first step for any UNION-based attack.
 *   Payload Used: ' UNION SELECT NULL,NULL,NULL--
 *   Learning: I learned how to use a series of UNION SELECT NULL payloads to probe the database. By incrementing the number of NULL values until the query executed without error, I successfully identified that the query returns 3 columns. This knowledge is critical for structuring future attacks to exfiltrate data.
+---
+### 4. Lab: SQL injection UNION attack, finding a column containing text
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (UNION Attack)
+*   Description: The goal was to identify which column in the database query was compatible with string data. This is a crucial step before exfiltrating text-based information like usernames or passwords.
+*   Payload Used: ' UNION SELECT NULL, 'n3lzrn', NULL--
+*   Key Finding: The second column is of a string data type. This is the column that can be used to retrieve text data from other tables.
+*   Link to Lab: [SQL injection UNION attack, finding a column containing text](https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text)
+*   ---
+### 5. Lab: SQL injection UNION attack, retrieving data from other tables
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (UNION Attack)
+*   Description: This was a full-cycle attack. First, I performed reconnaissance to determine the number of columns (2) and identify which columns were text-compatible. Then, I launched a UNION attack to exfiltrate usernames and passwords from the users table. Finally, I used the stolen administrator credentials to successfully log in and take over the account.
+*   Payload Used: ' UNION SELECT username, password FROM users--
+*   Stolen Credentials: administrator:ygpl5ros0xbcsnf50hkg
+*   Key Finding: Successfully demonstrated the ability to not only retrieve sensitive data from a separate table but also to use that data to escalate privileges and gain administrative access.
+*   Link to Lab: [SQL injection UNION attack, retrieving data from other tables](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables)
