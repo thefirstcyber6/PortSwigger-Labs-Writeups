@@ -67,3 +67,12 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used: ' UNION SELECT banner, NULL FROM v$version--
 *   Key Finding: Successfully demonstrated the ability to perform reconnaissance on an Oracle database to identify its specific version, which is a critical first step in finding known exploits for that version.
 *   Link to Lab: [SQL injection attack, querying the database type and version on Oracle](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle)
+---
+### 7. Lab: SQL injection attack, listing the database contents on Oracle
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (UNION Attack)
+*   Database Type: Oracle
+*   Description: This lab required adapting the UNION attack methodology to an Oracle database. The core difference was the need to use the DUAL table for the SELECT statement in Oracle. I successfully enumerated the database to find the USERS table and its columns (USERNAME, PASSWORD), exfiltrated the credentials, and logged in as the administrator.
+*   Payload Used: ' UNION SELECT USERNAME, PASSWORD FROM USERS--
+*   Key Finding: Demonstrated adaptability by successfully executing an SQLi attack against a different database vendor (Oracle), which has a distinct syntax from PostgreSQL/MySQL. This proves a deeper understanding of the vulnerability itself, not just memorization of commands.
+*   Link to Lab: [SQL injection attack, listing the database contents on Oracle](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-on-oracle)
