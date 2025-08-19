@@ -85,3 +85,11 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used: ' UNION SELECT NULL, @@version#
 *   Key Finding: Successfully identified the database as MySQL/Microsoft. This lab demonstrated critical real-world skills in error analysis, payload adjustment, and the use of professional proxy tools like OWASP ZAP.
 *   Link to Lab: [SQL injection attack, querying the database type and version on MySQL and Microsoft](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-on-mysql-and-microsoft)
+---
+### 9. Lab: SQL injection attack, listing the database contents on non-Oracle databases
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (UNION Attack)
+*   Description: Executed a full-cycle attack to enumerate and exfiltrate data from a non-Oracle database. The process involved first identifying the number of columns and text-compatible columns. Then, I queried the database's schema to discover table and column names, specifically finding the users table and the username and password columns. Finally, I extracted the administrator's credentials and used them to log in and take over the account.
+*   Payload Used (Example): ' UNION SELECT table_name, NULL FROM information_schema.tables-- (To find tables), followed by ' UNION SELECT username, password FROM users-- (To exfiltrate data).
+*   Key Finding: Successfully demonstrated the ability to systematically explore a database schema, identify sensitive tables and columns, and extract credentials to achieve full account takeover.
+*   Link to Lab: [SQL injection attack, listing the database contents on non-Oracle databases](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-on-non-oracle)
