@@ -76,3 +76,12 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used: ' UNION SELECT USERNAME, PASSWORD FROM USERS--
 *   Key Finding: Demonstrated adaptability by successfully executing an SQLi attack against a different database vendor (Oracle), which has a distinct syntax from PostgreSQL/MySQL. This proves a deeper understanding of the vulnerability itself, not just memorization of commands.
 *   Link to Lab: [SQL injection attack, listing the database contents on Oracle](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-on-oracle)
+---
+### 8. Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (UNION Attack)
+*   Tools Used: OWASP ZAP
+*   Description: The objective was to identify the database type and version. Using OWASP ZAP to intercept and modify requests, I determined the column count was two. I then faced an Internal Server Error when placing the @@version payload in the first column, indicating a data type mismatch. By moving the payload to the second column, I successfully bypassed the error and exfiltrated the database version string.
+*   Payload Used: ' UNION SELECT NULL, @@version#
+*   Key Finding: Successfully identified the database as MySQL/Microsoft. This lab demonstrated critical real-world skills in error analysis, payload adjustment, and the use of professional proxy tools like OWASP ZAP.
+*   Link to Lab: [SQL injection attack, querying the database type and version on MySQL and Microsoft](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-on-mysql-and-microsoft)
