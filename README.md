@@ -93,3 +93,11 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used (Example): ' UNION SELECT table_name, NULL FROM information_schema.tables-- (To find tables), followed by ' UNION SELECT username, password FROM users-- (To exfiltrate data).
 *   Key Finding: Successfully demonstrated the ability to systematically explore a database schema, identify sensitive tables and columns, and extract credentials to achieve full account takeover.
 *   Link to Lab: [SQL injection attack, listing the database contents on non-Oracle databases](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-on-non-oracle)
+---
+### 10. Lab: SQL injection UNION attack, retrieving multiple values in a single column
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (UNION Attack)
+*   Description: This lab presented a significant challenge where only one column in the query results was compatible with text data. To overcome this, I utilized database-specific concatenation techniques to combine multiple data fields (username and password) into that single column, separated by a custom delimiter. This allowed for the successful exfiltration of credentials, leading to administrator account takeover.
+*   Payload Used (Example for PostgreSQL): ' UNION SELECT username || '~' || password, NULL FROM users--
+*   Key Finding: Demonstrated the ability to adapt to strict output constraints by using concatenation to exfiltrate multiple values through a single available text column. This is a crucial skill for real-world scenarios where output is limited.
+*   Link to Lab: [SQL injection UNION attack, retrieving multiple values in a single column](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column)
