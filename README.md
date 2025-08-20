@@ -101,3 +101,12 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used (Example for PostgreSQL): ' UNION SELECT username || '~' || password, NULL FROM users--
 *   Key Finding: Demonstrated the ability to adapt to strict output constraints by using concatenation to exfiltrate multiple values through a single available text column. This is a crucial skill for real-world scenarios where output is limited.
 *   Link to Lab: [SQL injection UNION attack, retrieving multiple values in a single column](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column)
+---
+### 11. Lab: Blind SQL injection with conditional responses
+*   Status: Solved
+*   Vulnerability Type: Blind SQL Injection (Boolean-based)
+*   Tools Used: Burp Suite (Intruder)
+*   Description: This lab marked a significant step into advanced techniques. With no direct output from the database, I had to exfiltrate data by asking a series of true/false questions. Using Burp Suite's Intruder tool, I automated the process of sending conditional queries via a tracking cookie to determine the correct characters of the administrator's password one by one, based on the presence of a "Welcome back!" message in the response.
+*   Payload Used (Example Logic): ... ' AND (SELECT SUBSTRING(password, {§1§}, 1) FROM users WHERE username = 'administrator') = '{§a§}'-- (Configured in Burp Intruder)
+*   Key Finding: Successfully demonstrated the ability to perform a meticulous, character-by-character data exfiltration using boolean-based blind SQL injection. This proves a deep, inferential understanding of database interactions and proficiency with professional tools like Burp Suite Intruder for automating complex attacks.
+*   Link to Lab: [Blind SQL injection with conditional responses](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
