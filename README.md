@@ -109,4 +109,14 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Description: This lab marked a significant step into advanced techniques. With no direct output from the database, I had to exfiltrate data by asking a series of true/false questions. Using Burp Suite's Intruder tool, I automated the process of sending conditional queries via a tracking cookie to determine the correct characters of the administrator's password one by one, based on the presence of a "Welcome back!" message in the response.
 *   Payload Used (Example Logic): ... ' AND (SELECT SUBSTRING(password, {§1§}, 1) FROM users WHERE username = 'administrator') = '{§a§}'-- (Configured in Burp Intruder)
 *   Key Finding: Successfully demonstrated the ability to perform a meticulous, character-by-character data exfiltration using boolean-based blind SQL injection. This proves a deep, inferential understanding of database interactions and proficiency with professional tools like Burp Suite Intruder for automating complex attacks.
-*   Link to Lab: [Blind SQL injection with conditional responses](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
+*   Link to Lab: [Blind SQL injection with conditional responses](https://portswigger.net/web-security/sql-injection/blind/lab-conditio
+*   nal-responses)
+---
+### 12. Lab: Blind SQL injection with conditional errors
+*   Status: Solved
+*   Vulnerability Type: Blind SQL Injection (Error-based)
+*   Tools Used: Burp Suite (Intruder)
+*   Description: This lab required a different blind injection technique. Instead of relying on a positive response, I intentionally triggered database errors to confirm true conditions. By injecting a CASE statement that caused a division-by-zero error only when a character guess was correct, I could infer the administrator's password. The entire process was automated using Burp Suite's Intruder to systematically test each character.
+*   Payload Used (Example Logic): ... '||(SELECT CASE WHEN (SUBSTR(password,{§1§},1)='{§a§}') THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||' (Configured in Burp Intruder)
+*   Key Finding: Successfully demonstrated proficiency in error-based blind SQL injection, a powerful technique for when an application suppresses positive feedback but still reveals errors. This showcases adaptability and a deeper understanding of database error handling.
+*   Link to Lab: [Blind SQL injection with conditional errors](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
