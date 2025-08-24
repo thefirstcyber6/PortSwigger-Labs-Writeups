@@ -118,5 +118,13 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Tools Used: Burp Suite (Intruder)
 *   Description: This lab required a different blind injection technique. Instead of relying on a positive response, I intentionally triggered database errors to confirm true conditions. By injecting a CASE statement that caused a division-by-zero error only when a character guess was correct, I could infer the administrator's password. The entire process was automated using Burp Suite's Intruder to systematically test each character.
 *   Payload Used (Example Logic): ... '||(SELECT CASE WHEN (SUBSTR(password,{§1§},1)='{§a§}') THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||' (Configured in Burp Intruder)
-*   Key Finding: Successfully demonstrated proficiency in error-based blind SQL injection, a powerful technique for when an application suppresses positive feedback but still reveals errors. This showcases adaptability and a deeper understanding of database error handling.
+*   Key Finding: Successfully demonstrated proficiency in error-based blind SQL injection, a powerful technique for when an application suppresses positive feedback but still reveals errors. This showcases adaptability and a deeper understanding of database error han---
+### 13. Lab: Visible error-based SQL injection
+*   Status: Solved
+*   Vulnerability Type: Error-based SQL Injection
+*   Tools Used: Burp Suite (Repeater)
+*   Description: This lab demonstrated a highly efficient data exfiltration technique. Instead of inferring data bit by bit, I forced the database to disclose sensitive information directly within its error messages. By injecting a query that attempted to cast a text-based password to an integer, the application returned a verbose error message that included the full password, allowing for immediate data theft and account takeover.
+*   Payload Used (Example Logic): ' AND CAST((SELECT password FROM users LIMIT 1) as int)--
+*   Key Finding: Mastered the technique of triggering and manipulating verbose database error messages to exfiltrate data in a single request, a much faster method than blind injection techniques. This showcases an ability to leverage application misconfigurations for maximum impact.
+*   Link to Lab: [Visible error-based SQL injection](https://portswigger.net/web-security/sql-injection/error-based/lab-visible-error-based)dling.
 *   Link to Lab: [Blind SQL injection with conditional errors](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
