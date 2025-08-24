@@ -128,3 +128,12 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Key Finding: Mastered the technique of triggering and manipulating verbose database error messages to exfiltrate data in a single request, a much faster method than blind injection techniques. This showcases an ability to leverage application misconfigurations for maximum impact.
 *   Link to Lab: [Visible error-based SQL injection](https://portswigger.net/web-security/sql-injection/error-based/lab-visible-error-based)dling.
 *   Link to Lab: [Blind SQL injection with conditional errors](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors)
+---
+### 14. Lab: Blind SQL injection with time delays
+*   Status: Solved
+*   Vulnerability Type: Blind SQL Injection (Time-based)
+*   Tools Used: Burp Suite (Repeater / Intruder)
+*   Description: This lab required the ultimate blind injection technique for scenarios where the application gives no differential feedback in its response body. I injected database-specific commands (e.g., pg_sleep()) that force the database to pause for a set duration if a condition is true. By monitoring the response times in Burp Suite, I could infer the data bit by bit, demonstrating a successful attack even against a completely 'silent' application.
+*   Payload Used (Example Logic): '||(SELECT CASE WHEN (username='administrator' AND SUBSTR(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users)--
+*   Key Finding: Mastered time-based blind SQL injection, the final resort for data exfiltration when no other feedback channel is available. This showcases the ability to exploit the most subtle information leaks (response time) and demonstrates a comprehensive understanding of advanced SQL injection methodologies.
+*   Link to Lab: [Blind SQL injection with time delays](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays)
