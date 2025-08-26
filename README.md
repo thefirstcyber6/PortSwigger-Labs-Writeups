@@ -137,3 +137,12 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used (Example Logic): '||(SELECT CASE WHEN (username='administrator' AND SUBSTR(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users)--
 *   Key Finding: Mastered time-based blind SQL injection, the final resort for data exfiltration when no other feedback channel is available. This showcases the ability to exploit the most subtle information leaks (response time) and demonstrates a comprehensive understanding of advanced SQL injection methodologies.
 *   Link to Lab: [Blind SQL injection with time delays](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays)
+---
+### 15. Lab: Blind SQL injection with time delays and information retrieval
+*   Status: Solved
+*   Vulnerability Type: Blind SQL Injection (Time-based Data Exfiltration)
+*   Tools Used: Burp Suite (Intruder)
+*   Description: This advanced lab combined two skills: time-based blind injection and automated data retrieval. I crafted a payload using a CASE statement and a database-specific sleep command (pg_sleep). This payload would only cause a time delay if the guessed character in the administrator's password was correct. I then used Burp Intruder to automate the process, iterating through all possible characters for each position to successfully exfiltrate the full password without any direct feedback from the application.
+*   Payload Used (Example Logic): ';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,§1§,1)='§a§') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users-- (Configured in Burp Intruder)
+*   Key Finding: Successfully demonstrated the ability to perform a fully automated, time-based blind SQL injection attack to exfiltrate sensitive data. This is a critical skill for the most challenging real-world scenarios where applications are completely hardened against feedback.
+*   Link to Lab: [Blind SQL injection with time delays and information retrieval](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
