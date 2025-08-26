@@ -146,3 +146,20 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used (Example Logic): ';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,§1§,1)='§a§') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users-- (Configured in Burp Intruder)
 *   Key Finding: Successfully demonstrated the ability to perform a fully automated, time-based blind SQL injection attack to exfiltrate sensitive data. This is a critical skill for the most challenging real-world scenarios where applications are completely hardened against feedback.
 *   Link to Lab: [Blind SQL injection with time delays and information retrieval](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval)
+---
+### Labs 15 & 16: Out-of-Band (OAST) SQL Injection
+*   Status: Investigated & Understood (Unsolved due to platform constraints)
+*   Vulnerability Type: Blind SQL Injection (Out-of-Band Interaction & Data Exfiltration)
+*   Investigation Summary: These labs require triggering an out-of-band network interaction to a server controlled by the tester. I successfully set up and ran a free, open-source alternative to Burp Collaborator (Project Discovery's Interactsh). However, after thorough investigation and reading the lab's official notes, it was confirmed that the Academy's firewall is intentionally configured to block all external connections except those to the official Burp Collaborator server. This makes solving these specific labs impossible without a Burp Suite Professional license.
+*   Key Finding & Skill Learned: The primary lesson was not in the attack itself, but in troubleshooting and problem diagnosis. I learned how to set up and use OAST tools and, more importantly, how to identify when a failure is caused by environmental constraints (like a firewall) rather than a flawed payload. This is a critical real-world skill. I am proficient in the OAST technique and can apply it in real-world scenarios without such restrictions.
+*   Link to Lab 15: [Blind SQL injection with out-of-band interaction](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band)
+*   Link to Lab 16: [Blind SQL injection with out-of-band data exfiltration](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band-data-exfiltration)
+*   ---
+### 17. Lab: SQL injection with filter bypass via XML encoding
+*   Status: Solved
+*   Vulnerability Type: SQL Injection (Filter Bypass)
+*   Tools Used: Burp Suite (Repeater), XML Encoding
+*   Description: This final lab presented a Web Application Firewall (WAF) that blocked common SQL injection keywords and characters. The vulnerability was in a function that processed XML data. I successfully bypassed the filter by replacing the blocked characters (like spaces and single quotes) with their XML entity-encoded equivalents (e.g., &#x20; for a space). This allowed the payload to pass through the WAF undetected and be correctly interpreted by the back-end database, leading to a successful UNION attack and full credential exfiltration.
+*   Payload Used (Example Logic): 1&#x20;UNION&#x20;SELECT&#x20;username,&#x20;password&#x20;FROM&#x20;users-- (with all necessary characters encoded)
+*   Key Finding: Mastered the critical skill of bypassing security filters (WAFs) by using alternative encodings. This demonstrates an understanding of not just the vulnerability, but also the defense mechanisms and how to circumvent them, a highly valuable skill in professional penetration testing.
+*   Link to Lab: [SQL injection with filter bypass via XML encoding](https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding)
