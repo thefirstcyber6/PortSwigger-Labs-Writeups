@@ -163,3 +163,20 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used (Example Logic): 1&#x20;UNION&#x20;SELECT&#x20;username,&#x20;password&#x20;FROM&#x20;users-- (with all necessary characters encoded)
 *   Key Finding: Mastered the critical skill of bypassing security filters (WAFs) by using alternative encodings. This demonstrates an understanding of not just the vulnerability, but also the defense mechanisms and how to circumvent them, a highly valuable skill in professional penetration testing.
 *   Link to Lab: [SQL injection with filter bypass via XML encoding](https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding)
+---
+## 2. Cross-Site Scripting (XSS)
+
+### 1. Lab: Reflected XSS into HTML context with nothing encoded
+*   Status: Solved
+*   Vulnerability Type: Reflected Cross-Site Scripting (XSS)
+*   Description: This was the first lab in the XSS module. The goal was to inject a script into a search query that would be reflected back on the results page and executed by the browser. The application had no encoding or filtering defenses, making it a straightforward injection.
+*   Payload Used: <script>alert(1)</script>
+*   Key Finding: Successfully demonstrated a fundamental understanding of Reflected XSS by injecting a simple script payload into an unprotected input field, causing arbitrary JavaScript to execute in the user's browser. This marks the beginning of my journey into client-side vulnerabilities.
+*   Link to Lab: [Reflected XSS into HTML context with nothing encoded](https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded)
+*   ### 2. Lab: Stored XSS into HTML context with nothing encoded
+*   Status: Solved
+*   Vulnerability Type: Stored Cross-Site Scripting (XSS)
+*   Description: This lab demonstrated the impact of Stored XSS. I submitted a comment containing a script payload. The application stored this comment in its database without proper sanitization. As a result, the script was permanently embedded in the blog post page and executed in the browser of every user who visited it.
+*   Payload Used: <script>alert(1)</script>
+*   Key Finding: Successfully executed a Stored XSS attack, highlighting the difference from Reflected XSS. This type of vulnerability is more severe as it affects all users who view the compromised page, not just those who click a malicious link. This showcases an ability to create persistent threats.
+*   Link to Lab: [Stored XSS into HTML context with nothing encoded](https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded)
