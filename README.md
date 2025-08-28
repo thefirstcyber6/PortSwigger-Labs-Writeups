@@ -166,17 +166,34 @@ This repository contains my personal solutions and notes for the labs from PortS
 ---
 ## 2. Cross-Site Scripting (XSS)
 
-### 1. Lab: Reflected XSS into HTML context with nothing encoded
+### 18. Lab: Reflected XSS into HTML context with nothing encoded
 *   Status: Solved
 *   Vulnerability Type: Reflected Cross-Site Scripting (XSS)
 *   Description: This was the first lab in the XSS module. The goal was to inject a script into a search query that would be reflected back on the results page and executed by the browser. The application had no encoding or filtering defenses, making it a straightforward injection.
 *   Payload Used: <script>alert(1)</script>
 *   Key Finding: Successfully demonstrated a fundamental understanding of Reflected XSS by injecting a simple script payload into an unprotected input field, causing arbitrary JavaScript to execute in the user's browser. This marks the beginning of my journey into client-side vulnerabilities.
 *   Link to Lab: [Reflected XSS into HTML context with nothing encoded](https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded)
-*   ### 2. Lab: Stored XSS into HTML context with nothing encoded
+*   ### 19. Lab: Stored XSS into HTML context with nothing encoded
 *   Status: Solved
 *   Vulnerability Type: Stored Cross-Site Scripting (XSS)
 *   Description: This lab demonstrated the impact of Stored XSS. I submitted a comment containing a script payload. The application stored this comment in its database without proper sanitization. As a result, the script was permanently embedded in the blog post page and executed in the browser of every user who visited it.
 *   Payload Used: <script>alert(1)</script>
 *   Key Finding: Successfully executed a Stored XSS attack, highlighting the difference from Reflected XSS. This type of vulnerability is more severe as it affects all users who view the compromised page, not just those who click a malicious link. This showcases an ability to create persistent threats.
 *   Link to Lab: [Stored XSS into HTML context with nothing encoded](https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded)
+---
+### 20. Lab: DOM XSS in document.write sink using source location.search
+*   Status: Solved
+*   Vulnerability Type: DOM-based Cross-Site Scripting (XSS)
+*   Description: This was my first DOM XSS challenge. The key was to analyze the client-side JavaScript code to identify the source (where user input comes from) and the sink (where it's executed). I discovered that the application was taking input directly from the URL (location.search) and writing it to the page using document.write without any sanitization. This allowed me to craft a URL that executed arbitrary JavaScript.
+*   Payload Used: ?search=<script>alert(1)</script>
+*   Key Finding: Successfully identified and exploited a classic Source-to-Sink DOM XSS vulnerability, demonstrating an understanding of client-side code analysis.
+*   Link to Lab: [DOM XSS in document.write sink using source location.search](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-document-write-sink)
+
+---
+### 21. Lab: DOM XSS in innerHTML sink using source location.search
+*   Status: Solved
+*   Vulnerability Type: DOM-based Cross-Site Scripting (XSS)
+*   Description: Similar to the previous lab, but this time the sink was innerHTML. While innerHTML can sometimes be tricky, the lack of input filtering made it vulnerable. I constructed a payload with an img tag and an invalid src attribute, using the onerror event to trigger the JavaScript payload when the image failed to load.
+*   Payload Used: ?search=<img src=1 onerror=alert(1)>
+*   Key Finding: Demonstrated the ability to exploit an innerHTML sink, a common but sometimes misunderstood vulnerability. This required using an event handler (onerror) to achieve code execution, showcasing a more creative approach to payload construction.
+*   Link to Lab: [DOM XSS in innerHTML sink using source location.search](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-innerhtml-sink)
