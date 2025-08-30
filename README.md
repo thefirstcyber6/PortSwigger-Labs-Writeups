@@ -197,3 +197,29 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used: ?search=<img src=1 onerror=alert(1)>
 *   Key Finding: Demonstrated the ability to exploit an innerHTML sink, a common but sometimes misunderstood vulnerability. This required using an event handler (onerror) to achieve code execution, showcasing a more creative approach to payload construction.
 *   Link to Lab: [DOM XSS in innerHTML sink using source location.search](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-innerhtml-sink)
+---
+### 22. Lab: DOM XSS in jQuery anchor href attribute sink using location.search source
+*   Status: Solved
+*   Vulnerability Type: DOM-based XSS (jQuery Sink)
+*   Description: This lab introduced jQuery. I analyzed the client-side code and found it was using location.search to populate the href attribute of a link. By using the javascript: protocol, I was able to turn the link itself into an executable payload, demonstrating an understanding of how to exploit sinks within common JavaScript libraries.
+*   Payload Used: ?returnUrl=javascript:alert(1)
+*   Key Finding: Successfully exploited a DOM XSS vulnerability within a jQuery context, proving the ability to analyze and attack third-party library implementations.
+*   Link to Lab: [DOM XSS in jQuery anchor href attribute sink using location.search source](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-href-attribute-sink)
+
+---
+### 23. Lab: DOM XSS in jQuery selector sink using a hashchange event
+*   Status: Solved
+*   Vulnerability Type: DOM-based XSS (Event-based)
+*   Description: This was a highly advanced lab. The vulnerability was not triggered on page load, but on a hashchange event. I had to craft a payload that used the URL's hash (#) to select an element on the page and trigger an event. This required a deep understanding of how jQuery selectors and browser events work together.
+*   Payload Used: https://LAB-ID.web-security-academy.net/#<img src=1 onerror=alert(1)>
+*   Key Finding: Mastered event-based DOM XSS, a subtle but powerful attack vector. This shows an ability to find vulnerabilities that are not immediately apparent and require user interaction or specific browser events to trigger.
+*   Link to Lab: [DOM XSS in jQuery selector sink using a hashchange event](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-selector-hashchange-event)
+
+---
+### 24. Lab: Reflected XSS into attribute with angle brackets HTML-encoded
+*   Status: Solved
+*   Vulnerability Type: Reflected XSS (Bypassing HTML Encoding)
+*   Description: This was my first challenge involving bypassing a security filter. The application was encoding < and > characters, preventing standard script tags. The key was to realize I was already inside an HTML tag. I broke out of the existing attribute by closing it with a " and then added a new event handler (onmouseover) to execute my payload.
+*   Payload Used:  " onmouseover="alert(1)
+*   Key Finding: Successfully bypassed a common XSS defense (HTML entity encoding) by manipulating the HTML attribute context. This is a fundamental skill in real-world penetration testing.
+*   Link to Lab: [Reflected XSS into attribute with angle brackets HTML-encoded](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-attribute-angle-brackets-html-encoded)
