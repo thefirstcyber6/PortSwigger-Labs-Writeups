@@ -223,3 +223,20 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used:  " onmouseover="alert(1)
 *   Key Finding: Successfully bypassed a common XSS defense (HTML entity encoding) by manipulating the HTML attribute context. This is a fundamental skill in real-world penetration testing.
 *   Link to Lab: [Reflected XSS into attribute with angle brackets HTML-encoded](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-attribute-angle-brackets-html-encoded)
+---
+### 25. Lab: Stored XSS into anchor href attribute with double quotes HTML-encoded
+*   Status: Solved
+*   Vulnerability Type: Stored XSS (Bypassing HTML Encoding)
+*   Description: This lab combined Stored XSS with filter evasion. The application stored user input in an href attribute but encoded double quotes, preventing the use of event handlers. The solution was to use the javascript: protocol directly in the URL field, creating a permanent malicious link on the page.
+*   Payload Used: javascript:alert(1)
+*   Key Finding: Successfully bypassed double-quote encoding in a stored context by using the javascript: URI scheme, a classic and effective technique.
+*   Link to Lab: [Stored XSS into anchor href attribute with double quotes HTML-encoded](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-href-attribute-double-quotes-html-encoded)
+
+---
+### 26. Lab: Reflected XSS into a JavaScript string with angle brackets HTML encoded
+*   Status: Solved
+*   Vulnerability Type: Reflected XSS (JavaScript String Escape)
+*   Description: This was a critical challenge that taught me how to escape from a JavaScript string context. The application placed my input inside a JavaScript variable, but encoded angle brackets. The solution was to terminate the string with a single quote ('), add a logical operator (-), and then inject my JavaScript code, followed by a comment (//) to neutralize the rest of the original script.
+*   Payload Used: '-alert(1)//
+*   Key Finding: Mastered the technique of breaking out of a JavaScript string context. This is a fundamental skill for exploiting XSS in modern web applications that heavily rely on client-side scripting.
+*   Link to Lab: [Reflected XSS into a JavaScript string with angle brackets HTML encoded](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-html-encoded)
