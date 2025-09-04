@@ -240,3 +240,42 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used: '-alert(1)//
 *   Key Finding: Mastered the technique of breaking out of a JavaScript string context. This is a fundamental skill for exploiting XSS in modern web applications that heavily rely on client-side scripting.
 *   Link to Lab: [Reflected XSS into a JavaScript string with angle brackets HTML encoded](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-html-encoded)
+---
+### 27. Lab: DOM XSS in document.write sink using source location.search inside a select element
+*   Status: Solved
+*   Level: Practitioner
+*   Vulnerability Type: DOM-based XSS (Context-aware Evasion)
+*   Description: This lab required escaping a highly restrictive HTML context. The sink was inside a <select> element, which doesn't render most HTML tags. The solution was to close the <select> and <option> tags first, and then inject a standard XSS payload.
+*   Payload Used: ?storeId=</option></select><img src=1 onerror=alert(1)>
+*   Key Finding: Demonstrated the ability to perform context-aware payload construction, understanding the specific limitations of an HTML element and crafting a payload to break out of it.
+*   Link to Lab: [DOM XSS in document.write sink using source location.search inside a select element](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-document-write-sink-inside-select-element)
+
+---
+### 28. Lab: DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded
+*   Status: Solved
+*   Level: Practitioner
+*   Vulnerability Type: DOM-based XSS (AngularJS Sandbox Escape)
+*   Description: A major milestone. This lab involved exploiting an XSS vulnerability in a modern JavaScript framework (AngularJS). Standard payloads were blocked by encoding and the AngularJS sandbox. The solution was to use an AngularJS expression that executes code without needing standard script tags or event handlers, bypassing the sandbox.
+*   Payload Used: {{constructor.constructor('alert(1)')()}}
+*   Key Finding: Successfully exploited a framework-specific vulnerability, proving the ability to adapt attack techniques to modern, complex client-side environments. This is a highly valuable skill.
+*   Link to Lab: [DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-angularjs-expression)
+
+---
+### 29. Lab: Reflected DOM XSS
+*   Status: Solved
+*   Level: Practitioner
+*   Vulnerability Type: Hybrid XSS (Reflected DOM-based)
+*   Description: This lab showcased a hybrid vulnerability where a server-side reflection was processed by client-side JavaScript. The server reflected input into a JavaScript string, which was then used in a dangerous sink. The key was to escape the JavaScript string on the server-side to create a valid DOM XSS payload on the client-side.
+*   Payload Used: \"-alert(1)}//
+*   Key Finding: Understood and exploited a hybrid Reflected+DOM vulnerability, demonstrating a holistic view of how server-side and client-side code can interact to create security flaws.
+*   Link to Lab: [Reflected DOM XSS](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-reflected-dom-xss)
+
+---
+### 30. Lab: Stored DOM XSS
+*   Status: Solved
+*   Level: Practitioner
+*   Vulnerability Type: Hybrid XSS (Stored DOM-based)
+*   Description: Similar to the previous lab, but with a stored vector. The server stored user input which was later processed insecurely by client-side JavaScript. The attack involved crafting a payload that, when retrieved from the database, would trigger a DOM-based XSS. This makes the attack persistent and more dangerous.
+*   Payload Used: "><img src=1 onerror=alert(1)>
+*   Key Finding: Mastered the concept of Stored DOM XSS, where a server-side stored value becomes a client-side attack vector. This demonstrates an understanding of the full lifecycle of a persistent XSS attack.
+*   Link to Lab: [Stored DOM XSS](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-stored-dom-xss)
