@@ -325,3 +325,15 @@ This repository contains my personal solutions and notes for the labs from PortS
 *   Payload Used: "><img src=1 onerror=alert(1)>
 *   Key Finding: Mastered the concept of Stored DOM XSS, where a server-side stored value becomes a client-side attack vector. This demonstrates an understanding of the full lifecycle of a persistent XSS attack.
 *   Link to Lab: [Stored DOM XSS](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-stored-dom-xss)
+
+---
+
+## 📫 Contact & Connect
+
+I'm always open to connecting with other learners, developers, and security professionals.
+
+*   Email: [thefirstcyber6@gmail.com]
+*   Upwork Profile: [Link to your Upwork profile when you create it]
+*   LinkedIn: [Link to your LinkedIn profile if you have one]
+
+Let's connect and make the web a safer place together!
