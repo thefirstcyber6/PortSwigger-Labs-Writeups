@@ -1,6 +1,6 @@
 # My Web Security Academy Journey: Writeups & Notes
 
-![Web Security Banner](https://i.imgur.com/g0i3d1G.png)
+![Web Security Banner](https://i.imgur.com/E2oY1z6.png)
 
 Welcome to my personal repository documenting my journey through the PortSwigger Web Security Academy. This project serves as a live portfolio of my skills, a journal of my learning process, and a demonstration of my commitment to mastering the art of web application security.
 
