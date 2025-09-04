@@ -10,7 +10,7 @@ I take security very seriously. While this repository itself is unlikely to cont
 
 If you discover a security vulnerability in one of my projects, please report it to me privately. Do not create a public GitHub issue.
 
-Please send an email to: [your-email@example.com]
+Please send an email to: [thefirstcyber6@gmail.com]
 
 I will do my best to respond to your report within 48 hours.
 
