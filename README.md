@@ -1,3 +1,49 @@
+# My Web Security Academy Journey: Writeups & Notes
+
+![Web Security Banner](https://i.imgur.com/g0i3d1G.png)
+
+Welcome to my personal repository documenting my journey through the PortSwigger Web Security Academy. This project serves as a live portfolio of my skills, a journal of my learning process, and a demonstration of my commitment to mastering the art of web application security.
+
+My goal is to transition from a passionate learner to a professional Web Security Tester / Bug Bounty Hunter. I am actively developing my skills to provide value to clients on platforms like Upwork and to contribute to a safer web.
+
+---
+
+## 📜 Table of Contents
+
+*   [About This Project](#-about-this-project)
+*   [Skills Demonstrated](#-skills-demonstrated)
+*   [Lab Writeups](#-lab-writeups)
+*   [My Approach](#-my-approach)
+*   [Contact & Connect](#-contact--connect)
+
+---
+
+## 🎯 About This Project
+
+This repository is more than just a list of solved labs. It's a structured showcase of my practical abilities in identifying, exploiting, and documenting web vulnerabilities. Each writeup details the vulnerability type, the tools I used (like Burp Suite and ZAP), the payloads I crafted, and the key findings from each exercise.
+
+## 🛠️ Skills Demonstrated
+
+Through these labs, I have gained hands-on experience with a wide range of critical web security vulnerabilities, including:
+
+*   SQL Injection (SQLi):
+    *   Error-based, Union-based, and Blind SQLi techniques.
+    *   Database enumeration and data exfiltration.
+    *   Bypassing filters and WAFs.
+*   Cross-Site Scripting (XSS):
+    *   Reflected, Stored, and DOM-based XSS.
+    *   Context-aware payload crafting (HTML, attribute, JavaScript).
+    *   Bypassing filters and encoding mechanisms.
+*   _(...and many more to come!)_
+
+---
+
+## 🔬 Lab Writeups
+
+Below is a detailed log of the labs I have successfully completed.
+
+
+
 # My PortSwigger Labs Write-ups
 
 This repository contains my personal solutions and notes for the labs from PortSwigger's Web Security Academy. I use this to document my learning journey in web application security.
